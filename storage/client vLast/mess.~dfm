@@ -1,0 +1,39 @@
+object Inform: TInform
+  Left = 859
+  Top = 393
+  BorderIcons = []
+  BorderStyle = bsNone
+  ClientHeight = 53
+  ClientWidth = 232
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 20
+  object Panel1: TPanel
+    Left = 5
+    Top = 4
+    Width = 222
+    Height = 45
+    Color = clCaptionText
+    TabOrder = 0
+    object sLabel1: TLabel
+      Left = 8
+      Top = 8
+      Width = 65
+      Height = 24
+      Caption = 'sLabel1'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+  end
+end

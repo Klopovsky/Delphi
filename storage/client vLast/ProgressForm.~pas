@@ -1,0 +1,20 @@
+unit ProgressForm;
+
+interface
+
+uses
+  SysUtils, Windows, Messages, Classes, Graphics, Controls,
+  StdCtrls, ExtCtrls, Forms;
+
+type
+  TfProgress = class(TForm)
+  end;
+
+var
+  fProgress: TfProgress;
+
+implementation
+
+{$R *.DFM}
+
+end.
