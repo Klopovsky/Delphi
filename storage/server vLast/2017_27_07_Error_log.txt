@@ -1,0 +1,6 @@
+10:35:23  qLogger query error! operation:Login  user 11
+10:36:10  qLogger query error! operation:Login  user sa
+10:38:46  qLogger query error! operation:Login  user sa
+10:39:04  qLogger query error! operation:InsertRecord  user sa
+10:39:04  qLogger query error! operation:LoadFile  user sa
+10:39:04  qUpdateStatusPict query error! file:0001_0001_02915_1_02907_02_00.rpa  user sa

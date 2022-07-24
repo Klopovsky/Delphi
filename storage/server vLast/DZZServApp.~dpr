@@ -1,0 +1,19 @@
+program DZZServApp;
+
+uses
+  Forms,
+  main in 'main.pas' {fMain},
+  DZZServApp_TLB in 'DZZServApp_TLB.pas',
+  RDMDZZ in 'RDMDZZ.pas' {DZZRDM: TRemoteDataModule} {DZZRDM: CoClass},
+  propCon in 'propCon.pas' {FConProperty};
+
+{$R *.TLB}
+ 
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TfMain, fMain);
+  Application.CreateForm(TFConProperty, FConProperty);
+  Application.Run;
+end.

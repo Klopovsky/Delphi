@@ -1,0 +1,20 @@
+11:04:05  qLogger query error! operation:Login  user 11
+11:04:49  qAddRecord query error!  user 11
+11:05:01  qLogger query error! operation:LoadFile  user 11
+11:05:03  qUpdateStatusPict query error! file:0001_0001_00378_1_00371_01_10o.tif  user 11
+11:07:06  qLogger query error! operation:Login  user 11
+11:07:38  qAddRecord query error!  user 11
+11:07:40  qLogger query error! operation:LoadFile  user 11
+11:07:40  qUpdateStatusPict query error! file:0001_0001_00378_1_00371_01_sli.bsv  user 11
+11:08:51  qLogger query error! operation:Login  user 11
+11:09:29  qAddRecord query error!  user 11
+11:09:30  qLogger query error! operation:LoadFile  user 11
+11:09:30  qUpdateStatusPict query error! file:0001_0001_00378_1_00371_01_Aurora.end  user 11
+11:10:49  qLogger query error! operation:Login  user 11
+11:11:29  qAddRecord query error!  user 11
+11:11:31  qLogger query error! operation:LoadFile  user 11
+11:11:31  qUpdateStatusPict query error! file:0001_0001_00378_1_00371_01_22o.jpg  user 11
+11:16:48  qLogger query error! operation:Login  user 11
+11:17:39  qAddRecord query error!  user 11
+11:17:45  qLogger query error! operation:LoadFile  user 11
+11:17:45  qUpdateStatusPict query error! file:20160204 Ïðîòîêîë ÑÏÎ ÑÑÏ ÑÏÎ ÊÈ - ÊÕÈÂ.doc  user 11

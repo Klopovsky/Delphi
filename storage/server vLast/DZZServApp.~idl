@@ -1,0 +1,58 @@
+[
+  uuid(0B2F220E-1A64-434B-9512-E561159376AF), 
+  version(1.0), 
+  helpstring("DZZServApp Library")
+    
+]
+library DZZServApp
+{
+
+  importlib("midas.dll");
+  importlib("stdole2.tlb");
+
+  [
+    uuid(7AB7AEBA-FEF3-4601-B27F-7EC939719D2F), 
+    version(1.0), 
+    helpstring("Dispatch interface for DZZRDM Object"), 
+    dual, 
+    oleautomation
+  ]
+   interface IDZZRDM: IAppServer
+  {
+    [
+    id(0x0000012D)
+    ]
+    HRESULT _stdcall Login([in] BSTR us, [in] BSTR psw, [out, retval] long * Value );
+    [
+    id(0x0000012E)
+    ]
+    HRESULT _stdcall ConnectedToBD([out, retval] long * Value );
+    [
+    id(0x0000012F)
+    ]
+    HRESULT _stdcall DiconnectToBD( void );
+    [
+    id(0x00000130)
+    ]
+    HRESULT _stdcall OpenFile([in] BSTR FileName, [out, retval] __int64 Value );
+    [
+    id(0x00000131)
+    ]
+    HRESULT _stdcall GetFileData([out] VARIANT * Data, [in] long ArraySize, [out, retval] long * Value );
+    [
+    id(0x00000132)
+    ]
+    HRESULT _stdcall CloseFile( void );
+  };
+
+  [
+    uuid(3F6BD6B1-BE14-4A32-BD15-25CF585CC399), 
+    version(1.0), 
+    helpstring("DZZRDM Object")
+  ]
+  coclass DZZRDM
+  {
+    [default] interface IDZZRDM;
+  };
+
+}; 

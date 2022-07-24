@@ -1,0 +1,161 @@
+unit DZZServApp_TLB;
+
+// ************************************************************************ //
+// WARNING                                                                    
+// -------                                                                    
+// The types declared in this file were generated from data read from a       
+// Type Library. If this type library is explicitly or indirectly (via        
+// another type library referring to this type library) re-imported, or the   
+// 'Refresh' command of the Type Library Editor activated while editing the   
+// Type Library, the contents of this file will be regenerated and all        
+// manual modifications will be lost.                                         
+// ************************************************************************ //
+
+// PASTLWTR : 1.2
+// File generated on 27.10.2015 13:28:09 from Type Library described below.
+
+// ************************************************************************  //
+// Type Lib: E:\Documents and Settings\Администратор\Рабочий стол\MTServer\server vLast\DZZServApp.tlb (1)
+// LIBID: {0B2F220E-1A64-434B-9512-E561159376AF}
+// LCID: 0
+// Helpfile: 
+// HelpString: DZZServApp Library
+// DepndLst: 
+//   (1) v1.0 Midas, (E:\WINDOWS\system32\midas.dll)
+//   (2) v2.0 stdole, (E:\WINDOWS\system32\stdole2.tlb)
+// ************************************************************************ //
+{$TYPEDADDRESS OFF} // Unit must be compiled without type-checked pointers. 
+{$WARN SYMBOL_PLATFORM OFF}
+{$WRITEABLECONST ON}
+{$VARPROPSETTER ON}
+interface
+
+uses Windows, ActiveX, Classes, Graphics, Midas, StdVCL, Variants;
+  
+
+// *********************************************************************//
+// GUIDS declared in the TypeLibrary. Following prefixes are used:        
+//   Type Libraries     : LIBID_xxxx                                      
+//   CoClasses          : CLASS_xxxx                                      
+//   DISPInterfaces     : DIID_xxxx                                       
+//   Non-DISP interfaces: IID_xxxx                                        
+// *********************************************************************//
+const
+  // TypeLibrary Major and minor versions
+  DZZServAppMajorVersion = 1;
+  DZZServAppMinorVersion = 0;
+
+  LIBID_DZZServApp: TGUID = '{0B2F220E-1A64-434B-9512-E561159376AF}';
+
+  IID_IDZZRDM: TGUID = '{7AB7AEBA-FEF3-4601-B27F-7EC939719D2F}';
+  CLASS_DZZRDM: TGUID = '{3F6BD6B1-BE14-4A32-BD15-25CF585CC399}';
+type
+
+// *********************************************************************//
+// Forward declaration of types defined in TypeLibrary                    
+// *********************************************************************//
+  IDZZRDM = interface;
+  IDZZRDMDisp = dispinterface;
+
+// *********************************************************************//
+// Declaration of CoClasses defined in Type Library                       
+// (NOTE: Here we map each CoClass to its Default Interface)              
+// *********************************************************************//
+  DZZRDM = IDZZRDM;
+
+
+// *********************************************************************//
+// Interface: IDZZRDM
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {7AB7AEBA-FEF3-4601-B27F-7EC939719D2F}
+// *********************************************************************//
+  IDZZRDM = interface(IAppServer)
+    ['{7AB7AEBA-FEF3-4601-B27F-7EC939719D2F}']
+    function Login(const us: WideString; const psw: WideString): Integer; safecall;
+    function ConnectedToBD: Integer; safecall;
+    procedure DiconnectToBD; safecall;
+    function GetFileData(out Data: OleVariant; ArraySize: Integer): Integer; safecall;
+    procedure CloseFile; safecall;
+    function OpenFile(const FileName: WideString): Double; safecall;
+    function SetParamFilter(const FieldName: WideString; const Param: WideString): Integer; safecall;
+    function GetAllInfo(id: Integer): Integer; safecall;
+    function FindPassport(idPict: Integer): Integer; safecall;
+    function AddRecord(const PictName: WideString; const PassportName: WideString; 
+                       const MarshLocat: WideString; const StrCoords: WideString; KAID: Integer; 
+                       SpectID: Integer; RazrID: Integer; RateQuality: Integer; PictSize: Double; 
+                       PictDate: TDateTime): Integer; safecall;
+    function Find(const str: WideString; const field: WideString): Integer; safecall;
+    procedure CloseFileWrite; safecall;
+    function SetFileData(VData: OleVariant; ArraySize: Integer): Integer; safecall;
+    function OpenFileWrite(const fname: WideString): Integer; safecall;
+    function StorageFileExist(const FileName: WideString): Shortint; safecall;
+    function FindAllPassports(const mname: WideString): Integer; safecall;
+  end;
+
+// *********************************************************************//
+// DispIntf:  IDZZRDMDisp
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {7AB7AEBA-FEF3-4601-B27F-7EC939719D2F}
+// *********************************************************************//
+  IDZZRDMDisp = dispinterface
+    ['{7AB7AEBA-FEF3-4601-B27F-7EC939719D2F}']
+    function Login(const us: WideString; const psw: WideString): Integer; dispid 301;
+    function ConnectedToBD: Integer; dispid 302;
+    procedure DiconnectToBD; dispid 303;
+    function GetFileData(out Data: OleVariant; ArraySize: Integer): Integer; dispid 305;
+    procedure CloseFile; dispid 306;
+    function OpenFile(const FileName: WideString): Double; dispid 304;
+    function SetParamFilter(const FieldName: WideString; const Param: WideString): Integer; dispid 307;
+    function GetAllInfo(id: Integer): Integer; dispid 308;
+    function FindPassport(idPict: Integer): Integer; dispid 309;
+    function AddRecord(const PictName: WideString; const PassportName: WideString; 
+                       const MarshLocat: WideString; const StrCoords: WideString; KAID: Integer; 
+                       SpectID: Integer; RazrID: Integer; RateQuality: Integer; PictSize: Double; 
+                       PictDate: TDateTime): Integer; dispid 310;
+    function Find(const str: WideString; const field: WideString): Integer; dispid 311;
+    procedure CloseFileWrite; dispid 312;
+    function SetFileData(VData: OleVariant; ArraySize: Integer): Integer; dispid 313;
+    function OpenFileWrite(const fname: WideString): Integer; dispid 314;
+    function StorageFileExist(const FileName: WideString): {??Shortint}OleVariant; dispid 315;
+    function FindAllPassports(const mname: WideString): Integer; dispid 316;
+    function AS_ApplyUpdates(const ProviderName: WideString; Delta: OleVariant; MaxErrors: Integer; 
+                             out ErrorCount: Integer; var OwnerData: OleVariant): OleVariant; dispid 20000000;
+    function AS_GetRecords(const ProviderName: WideString; Count: Integer; out RecsOut: Integer; 
+                           Options: Integer; const CommandText: WideString; var Params: OleVariant; 
+                           var OwnerData: OleVariant): OleVariant; dispid 20000001;
+    function AS_DataRequest(const ProviderName: WideString; Data: OleVariant): OleVariant; dispid 20000002;
+    function AS_GetProviderNames: OleVariant; dispid 20000003;
+    function AS_GetParams(const ProviderName: WideString; var OwnerData: OleVariant): OleVariant; dispid 20000004;
+    function AS_RowRequest(const ProviderName: WideString; Row: OleVariant; RequestType: Integer; 
+                           var OwnerData: OleVariant): OleVariant; dispid 20000005;
+    procedure AS_Execute(const ProviderName: WideString; const CommandText: WideString; 
+                         var Params: OleVariant; var OwnerData: OleVariant); dispid 20000006;
+  end;
+
+// *********************************************************************//
+// The Class CoDZZRDM provides a Create and CreateRemote method to          
+// create instances of the default interface IDZZRDM exposed by              
+// the CoClass DZZRDM. The functions are intended to be used by             
+// clients wishing to automate the CoClass objects exposed by the         
+// server of this typelibrary.                                            
+// *********************************************************************//
+  CoDZZRDM = class
+    class function Create: IDZZRDM;
+    class function CreateRemote(const MachineName: string): IDZZRDM;
+  end;
+
+implementation
+
+uses ComObj;
+
+class function CoDZZRDM.Create: IDZZRDM;
+begin
+  Result := CreateComObject(CLASS_DZZRDM) as IDZZRDM;
+end;
+
+class function CoDZZRDM.CreateRemote(const MachineName: string): IDZZRDM;
+begin
+  Result := CreateRemoteComObject(MachineName, CLASS_DZZRDM) as IDZZRDM;
+end;
+
+end.

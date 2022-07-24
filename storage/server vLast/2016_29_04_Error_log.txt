@@ -1,0 +1,4 @@
+10:06:48  qLogger query error! operation:Login  user 11
+10:07:18  qLogger query error! operation:InsertRecord  user 11
+10:08:03  qLogger query error! operation:LoadFile  user 11
+10:08:04  qUpdateStatusPict query error! file:353Ï198ÊÑ–46539–1105.doc  user 11
