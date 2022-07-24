@@ -1,0 +1,276 @@
+unit CubeRGB;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, OpenGL, ExtCtrls;
+type
+DesRGB = Array [0..2047, 0..2047, 0..2] of GLubyte;
+type
+  TForm6 = class(TForm)
+    procedure FormDestroy(Sender: TObject);
+    procedure Analiz();
+    procedure FormCreate(Sender: TObject);
+    procedure FormClick(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
+      MousePos: TPoint; var Handled: Boolean);
+    procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+      MousePos: TPoint; var Handled: Boolean);
+  private
+    DC : HDC;
+    hrc: HGLRC;
+    vLeft, vRight, vBottom, vTop, vNear, vFar,rotX,rotY,rotZ,rot : GLFloat;
+  public
+    des:^DesRGB;
+    resX,resY,fff: integer;
+  end;
+
+var
+  Form6: TForm6; m_X,m_Y,p,countUnicRGB:integer;
+  points: Array of TGLArrayf3;
+  
+implementation
+
+
+
+{$R *.dfm}
+
+{=======================================================================}
+procedure SetDCPixelFormat (hdc : HDC);
+var
+ pfd : TPixelFormatDescriptor;
+ nPixelFormat : Integer;
+begin
+ FillChar (pfd, SizeOf (pfd), 0);
+ pfd.dwFlags  := PFD_DRAW_TO_WINDOW or PFD_SUPPORT_OPENGL or PFD_DOUBLEBUFFER;
+ nPixelFormat := ChoosePixelFormat (hdc, @pfd);
+ SetPixelFormat (hdc, nPixelFormat, @pfd);
+end;
+
+{=======================================================================}
+
+procedure TForm6.FormDestroy(Sender: TObject);
+begin
+ wglMakeCurrent(0, 0);
+ wglDeleteContext(hrc);
+ ReleaseDC (Handle, DC);
+ DeleteDC (DC);
+ SetLength(points,0);     fff:=0;
+
+end;
+
+
+procedure TForm6.FormCreate(Sender: TObject);
+
+
+begin
+DC := GetDC (Handle);
+ SetDCPixelFormat(DC);
+ hrc := wglCreateContext(DC);
+ wglMakeCurrent(DC, hrc);
+
+ glClearColor (1.0, 1.0, 1.0, 1.0);
+ glColor3f (1.0, 0.0, 0.5);
+ vLeft := -0.25;
+ vRight := 1;
+ vBottom := -0.25;
+ vTop := 1;
+ vNear := 3;
+ vFar := 10;
+ rot:=180.0;
+ rotX:=0.0;
+ rotY:=0.0;
+ rotZ:=0.0;
+ glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
+  p:=0;
+
+fff:=1;
+end;
+
+procedure TForm6.Analiz();
+var
+i,j,k:integer;
+rgb : array of array[0..255,0..255] of byte;
+begin
+countUnicRGB:=0;
+
+SetLength(rgb,256);
+
+
+
+
+
+for i:=0 to resX-1 do
+for j:=0 to resY-1 do
+begin
+
+
+  if rgb[des[i,j,0],des[i,j,1],des[i,j,2]]=0 then
+    begin rgb[des[i,j,0],des[i,j,1],des[i,j,2]]:=1;
+      countUnicRGB:=countUnicRGB+1;
+    end;
+
+end;
+
+SetLength(points,countUnicRGB);
+k:=0;
+for i:=0 to resX-1 do
+for j:=0 to resY-1 do
+begin
+
+
+  if rgb[des[i,j,0],des[i,j,1],des[i,j,2]]=1 then
+    begin
+      points[k][0]:=des[i,j,0]/255;
+      points[k][1]:=des[i,j,1]/255;
+      points[k][2]:=des[i,j,2]/255;
+      rgb[des[i,j,0],des[i,j,1],des[i,j,2]]:=2;
+      k:=k+1;
+    end;
+
+end;
+SetLength(rgb,0);
+
+end;
+
+procedure TForm6.FormClick(Sender: TObject);
+begin
+SwapBuffers(DC);
+end;
+
+procedure TForm6.FormPaint(Sender: TObject);
+var i:integer;
+begin
+wglMakeCurrent(DC,hrc) ;
+
+glClear (GL_COLOR_BUFFER_BIT);
+glPushMatrix;
+glTranslatef(-0.5,-0.5,-0.5);
+ glBegin(GL_QUADS);
+   glVertex3f(1.0, 1.0, 1.0);
+   glVertex3f(0.0, 1.0, 1.0);
+   glVertex3f(0.0, 0.0, 1.0);
+   glVertex3f(1.0, 0.0, 1.0);
+ glEnd;
+
+ glBegin(GL_QUADS);
+   glVertex3f(1.0, 1.0, 0.0);
+   glVertex3f(1.0, 0.0, 0.0);
+   glVertex3f(0.0, 0.0, 0.0);
+   glVertex3f(0.0, 1.0, 0.0);
+ glEnd;
+
+ glBegin(GL_QUADS);
+   glVertex3f(0.0, 1.0, 1.0);
+   glVertex3f(0.0, 1.0, 0.0);
+   glVertex3f(0.0, 0.0, 0.0);
+   glVertex3f(0.0, 0.0, 1.0);
+ glEnd;
+
+ glBegin(GL_QUADS);
+   glVertex3f(1.0, 1.0, 1.0);
+   glVertex3f(1.0, 0.0, 1.0);
+   glVertex3f(1.0, 0.0, 0.0);
+   glVertex3f(1.0, 1.0, 0.0);
+ glEnd;
+
+ glBegin(GL_QUADS);
+   glVertex3f(0.0, 1.0, 0.0);
+   glVertex3f(0.0, 1.0, 1.0);
+   glVertex3f(1.0, 1.0, 1.0);
+   glVertex3f(1.0, 1.0, 0.0);
+ glEnd;
+
+ glBegin(GL_QUADS);
+   glVertex3f(0.0, 0.0, 0.0);
+   glVertex3f(1.0, 0.0, 0.0);
+   glVertex3f(1.0, 0.0, 1.0);
+   glVertex3f(0.0, 0.0, 1.0);
+ glEnd;
+
+                  p:=p+1;
+ glBegin(GL_POINTS);
+    For i := 0 to countUnicRGB - 1 do begin
+      glColor3fv(@points[i]);
+      glVertex3fv(@points[i]);
+    end;
+ glEnd;
+glPopMatrix;
+  glColor3f (1.0, 0.0, 0.5);
+ SwapBuffers(DC);
+end;
+
+procedure TForm6.FormResize(Sender: TObject);
+begin
+wglMakeCurrent(DC,hrc) ;
+glViewport(0, 0, ClientWidth, ClientHeight);
+ glLoadIdentity;
+ glFrustum (vLeft, vRight, vBottom, vTop, vNear, vFar);
+
+ glTranslatef(0.5, 0.5, -4.0);
+
+ glRotatef(rot, rotX, rotY, rotZ);
+
+ InvalidateRect(Handle, nil, False);
+ Caption:='rotX='+floattostr(rotX)+
+ '   rotY='+floattostr(rotY)+
+ '   rotZ='+floattostr(rotZ)+'   p=' + inttostr(p);
+if ClientHeight>ClientWidth then ClientWidth:=ClientHeight
+else ClientHeight:=ClientWidth;
+end;
+
+procedure TForm6.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+
+if HiWord(GetKeyState(VK_LBUTTON)) <> 0 then
+  begin
+if (m_X<X)then rotX:=rotX + 0.02;
+if (m_X>X)then rotX:=rotX - 0.02;
+
+
+if (m_Y>Y)then rotZ:=rotZ + 0.02;
+if (m_Y<Y)then rotZ:=rotZ - 0.02;
+
+if (m_Y>Y)and(m_X>X) then rotY:=rotY + 0.02;
+if (m_Y<Y)and(m_X<X) then rotY:=rotY - 0.02;
+
+if rotX>1.0 then rotX:=1.0;
+if rotX<-1.0 then rotX:=-1.0;
+if rotY>1.0 then rotY:=1.0;
+if rotY<-1.0 then rotY:=-1.0;
+if rotZ>1.0 then rotZ:=1.0;
+if rotZ<-1.0 then rotZ:=-1.0;
+
+FormResize(nil);
+  end;
+m_X:=X;
+m_Y:=Y;
+end;
+
+procedure TForm6.FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+ vLeft := vLeft + 0.1;
+ vRight := vRight - 0.1;
+ vBottom := vBottom + 0.1;
+ vTop := vTop - 0.1;
+  FormResize(nil);
+end;
+
+procedure TForm6.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+vLeft := vLeft - 0.1;
+vRight := vRight + 0.1;
+vBottom := vBottom - 0.1;
+vTop := vTop + 0.1;
+ FormResize(nil);
+end;
+
+end.
