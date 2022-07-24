@@ -1,0 +1,2 @@
+use DZZ;
+UPDATE Pict SET ID_Marsh = 1463 WHERE Pict.ID = 10318
