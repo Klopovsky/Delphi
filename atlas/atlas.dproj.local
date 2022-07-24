@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015.01.26 14:10:11.078.dproj,E:\Documents and Settings\Администратор\Рабочий стол\ewsssgsgd\JpegView.dproj=E:\Documents and Settings\Администратор\Рабочий стол\atlas\atlas.dproj</Transaction>
+    <Transaction>2015.01.26 14:10:27.812.PAS,E:\Documents and Settings\Администратор\Рабочий стол\ewsssgsgd\MAINUNIT.PAS=E:\Documents and Settings\Администратор\Рабочий стол\atlas\MainUnit.PAS</Transaction>
+    <Transaction>2015.01.26 14:10:27.812.dfm,E:\Documents and Settings\Администратор\Рабочий стол\ewsssgsgd\MAINUNIT.dfm=E:\Documents and Settings\Администратор\Рабочий стол\atlas\MainUnit.dfm</Transaction>
+    <Transaction>2015.02.24 14:22:04.296.pas,E:\Documents and Settings\Администратор\Рабочий стол\atlas\Unit1.pas=E:\Documents and Settings\Администратор\Рабочий стол\atlas\hull.pas</Transaction>
+    <Transaction>2015.02.25 13:03:25.515.pas,E:\Documents and Settings\Администратор\Рабочий стол\atlas\Unit2.pas=E:\Documents and Settings\Администратор\Рабочий стол\atlas\Addpoint.pas</Transaction>
+    <Transaction>2015.02.25 13:03:25.515.dfm,E:\Documents and Settings\Администратор\Рабочий стол\atlas\Unit2.dfm=E:\Documents and Settings\Администратор\Рабочий стол\atlas\Addpoint.dfm</Transaction>
+    <Transaction>2016.04.25 09:58:04.627.pas,C:\Documents and Settings\User\Рабочий стол\arh_Elena\atlas2\Unit1.pas=C:\Documents and Settings\User\Рабочий стол\arh_Elena\atlas2\OtherProc.pas</Transaction>
+  </Transactions>
+</BorlandProject>

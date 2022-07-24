@@ -1,0 +1,19 @@
+program atlas;
+
+uses
+  Forms,
+  MainUnit in 'MainUnit.pas' {Form1},
+  spline3 in 'spline3.pas',
+  ap in 'ap.pas',
+  hull in 'hull.pas',
+  Addpoint in 'Addpoint.pas' {Form2};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm2, Form2);
+  Application.Run;
+end.
